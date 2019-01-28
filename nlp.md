@@ -16,3 +16,9 @@ http://www.cse.kyoto-su.ac.jp/~g0846020/keywords/cosinSimilarity.html
 ```
 from sklearn.metrics.pairwise import cosine_similarity
 ```
+
+### Jaccard係数
+
+https://www.st-hakky-blog.com/entry/2018/01/18/183840
+
+### 
