@@ -21,4 +21,4 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 https://www.st-hakky-blog.com/entry/2018/01/18/183840
 
-### 
+https://www.albert2005.co.jp/knowledge/images/tech_mining_img63.jpg
