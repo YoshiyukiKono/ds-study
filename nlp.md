@@ -2,6 +2,9 @@
 
 ## Simiarity
 
+共起性の指標は、アソシエーション分析で用いられているものと同様
+https://www.albert2005.co.jp/knowledge/images/tech_mining_img63.jpg
+
 ### tf-idf (term frequency inverse document frequency)
 
 http://www.cse.kyoto-su.ac.jp/~g0846020/keywords/tf-idf.html
