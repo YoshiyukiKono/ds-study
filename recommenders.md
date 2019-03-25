@@ -6,6 +6,9 @@ Latent factor: User-Item Matrix と User-X Matrix Item-X Matrixの間の潜在�
 
 ALS(alternating least square)
 
+## Model
+Matrix Factorization Model
+
 ### Hyperparameters
 - Rank: determines the complexity of a latent factor ALS model
 - Lambda: used to prevent overfitting
