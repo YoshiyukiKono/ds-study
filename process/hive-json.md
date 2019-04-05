@@ -39,4 +39,9 @@ https://community.cloudera.com/t5/Batch-SQL-Apache-Hive/Create-Hive-Table-from-J
 ### Cannot validate serde : org.openx.data.jsonserde.jsonserde
 https://stackoverflow.com/questions/26644351/cannot-validate-serde-org-openx-data-jsonserde-jsonserde
 
+## Troubleshooting
+
+ファイルが置いていない時（も）このエラー
+Cannot validate serde : org.openx.data.jsonserde.jsonserde
+
 
