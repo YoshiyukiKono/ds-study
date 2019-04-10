@@ -1,6 +1,10 @@
 # Json SerDe
 
 ```
+add jar hdfs:/tmp/json-1.3.7.3.jar;
+add jar hdfs:/tmp/json-serde-1.3.7.3.jar;
+add jar hdfs:/tmp/json-serde-cdh5-shim-1.3.7.3AA.jar;
+
 DROP TABLE IF EXISTS twits;
 CREATE EXTERNAL TABLE twits (
 	messages ARRAY<STRUCT<body: STRING>>
