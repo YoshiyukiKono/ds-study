@@ -1,6 +1,18 @@
 # Json SerDe
 
+```
+DROP TABLE IF EXISTS twits;
+CREATE EXTERNAL TABLE twits (
+	messages ARRAY<STRUCT<body: STRING>>
+)
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' 
+STORED AS TEXTFILE
+LOCATION '/tmp/twits';
 
+select messages from twits;
+
+select message from twits lateral view explode(messages.body) messages as message;
+```
 ## 利用例
 ### HiveでJSONデータを処理するあれこれ(初級編)
 https://qiita.com/unksato/items/42405305c28e5a788cd7
