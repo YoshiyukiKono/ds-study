@@ -107,13 +107,57 @@ symbols,sentiment,body
 "[{""symbol"":""AAPL""},{""symbol"":""SPY""}]","{""basic"":""Bearish""}",$AAPL $SPY bearish macd cross. Rsi rejection
 ```
 
+### Insert Overwrite New Table
 ```
 create table twits_message (symbols STRING, sentiment STRING, body STRING) STORED AS TEXTFILE;
 insert overwrite table twits_message select message.symbols, message.entities.sentiment, message.body from twits lateral view explode(messages) messages as message;
 select symbols, sentiment, body from twits_message;
 ```
+### Hive to JSON
+https://github.com/klout/brickhouse
 
 
+https://codeday.me/jp/qa/20190211/256058.html
+
+```
+add jar hdfs:/tmp/brickhouse-0.7.1-SNAPSHOT.jar;
+CREATE TEMPORARY FUNCTION to_json AS 'brickhouse.udf.json.ToJsonUDF';
+
+SELECT to_json( named_struct( "symbols", symbols ,
+            "sentiment", sentiment,
+            "body", body ) )
+   FROM twits_message;
+```
+
+#### Output
+symbolsの扱いに課題：配列(String)が\u0002(START OF TEXT)で分割されている
+```
+"{""symbols"":""AAPL\u0002FB"",""sentiment"":""{\""basic\"":\""Bullish\""}"",""body"":""$FB $FB Zuck looking for the next bear to cuckold.  Easy $180 soon.   Will destroy $AAPL in it&#39;s sleep. $FB &gt; $AAPL""}"
+"{""symbols"":""AAPL\u0002C\u0002ROKU\u0002BABA"",""sentiment"":null,""body"":""Lessons Learning From My Losing Swing-Trades: #Apple + #Citigroup $AAPL $C Also $BABA $ROKU https://talkmarkets.com/content/investing-ideas--strategies/lessons-learning-from-my-losing-swing-trades-apple--citigroup?post=215908""}"
+"{""symbols"":""AAPL\u0002SPY"",""sentiment"":""{\""basic\"":\""Bearish\""}"",""body"":""$AAPL $SPY bearish macd cross. Rsi rejection""}"
+
+```
+
+#### ML想定フォーマット
+
+This JSON file contains a list of objects for each twit in the 'data' field:
+
+```
+{'data':
+  {'message_body': 'Neutral twit body text here',
+   'sentiment': 0},
+  {'message_body': 'Happy twit body text here',
+   'sentiment': 1},
+   ...
+}
+```
+
+The fields represent the following:
+
+- 'message_body': The text of the twit.
+- 'sentiment': Sentiment score for the twit, ranges from -2 to 2 in steps of 1, with 0 being neutral.
+
+ここでは、Ticker/Symbolは不要。
 
 ## 利用例
 ### HiveでJSONデータを処理するあれこれ(初級編)
