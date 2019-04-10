@@ -113,6 +113,21 @@ create table twits_message (symbols STRING, sentiment STRING, body STRING) STORE
 insert overwrite table twits_message select message.symbols, message.entities.sentiment, message.body from twits lateral view explode(messages) messages as message;
 select symbols, sentiment, body from twits_message;
 ```
+
+## TODO
+
+- 現在のクエリを基本に扱いやすいデータに切り詰める:sentiment.basic
+- SympolでのGroupや、SentimentでのGroup
+- ML利用データへ変換：Bulish -> 2, Bealish -> -2, NULLデータ除去など。DATAタグの付与（テキスト結合でよしとする？）
+- Hive検索結果をテキストに吐き出す（どうやる？　質問１）
+- Sparkで加工？　やりたくない？
+
+- とにかく、BODYをファイルに書き出す（＝austin_book相当として、Spacyrで扱う
+
+- HDFSからRのデータフレームにどうやって変換する？（難易度高）
+- 本文の何をどう、分析するか？
+
+
 ### Hive to JSON
 https://github.com/klout/brickhouse
 
