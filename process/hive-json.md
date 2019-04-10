@@ -1,5 +1,67 @@
 # Json SerDe
 
+## Twits
+実際は１行
+
+```
+{
+  "cursor" : {
+    "since" : 159007802,
+    "max" : 159000193,
+    "more" : true
+  },
+  "messages" : [
+    {
+      "source" : {
+        "id" : 2269,
+        "title" : "StockTwits Web",
+        "url" : "https://stocktwits.com"
+      },
+      "mentioned_users" : [
+
+      ],
+      "id" : 159007802,
+      "created_at" : "2019-03-31T05:39:15Z",
+      "symbols" : [
+        {
+          "watchlist_count" : 291210,
+          "id" : 686,
+          "symbol" : "AAPL",
+          "title" : "Apple Inc.",
+          "aliases" : [
+
+          ],
+          "is_following" : false
+        },
+        {
+          "watchlist_count" : 207648,
+          "id" : 7871,
+          "symbol" : "FB",
+          "title" : "Facebook",
+          "aliases" : [
+            "FBOOK"
+          ],
+          "is_following" : false
+        }
+      ],
+      "entities" : {
+        "chart" : {
+          "large" : "https://charts.stocktwits.com/production/large_159007802.png",
+          "original" : "https://charts.stocktwits.com/production/original_159007802.png",
+          "thumb" : "https://charts.stocktwits.com/production/small_159007802.png",
+          "url" : "https://charts.stocktwits.com/production/original_159007802.png"
+        },
+        "sentiment" : {
+          "basic" : "Bullish"
+        }
+      },
+      "body" : "$FB $FB Zuck looking for the next bear to cuckold.  Easy $180 soon.   Will destroy $AAPL in it&#39;s sleep. $FB &gt; $AAPL",
+      "user" : {
+        "id" : 493226,
+...
+```
+
+
 ```
 add jar hdfs:/tmp/json-1.3.7.3.jar;
 add jar hdfs:/tmp/json-serde-1.3.7.3.jar;
