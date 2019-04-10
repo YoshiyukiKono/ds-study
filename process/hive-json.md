@@ -79,6 +79,36 @@ select messages from twits;
 
 select message from twits lateral view explode(messages.body) messages as message;
 ```
+
+```
+DROP TABLE IF EXISTS twits;
+CREATE EXTERNAL TABLE twits (
+	messages 
+	ARRAY<
+	    STRUCT<body: STRING,
+	        symbols:ARRAY<STRUCT<symbol:STRING>>,
+	        entities:STRUCT<sentiment:STRING>
+	    >
+	>
+)
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' 
+STORED AS TEXTFILE
+LOCATION '/tmp/twits';
+```
+
+```
+select message.symbols, message.entities.sentiment, message.body from twits lateral view explode(messages) messages as message;
+```
+
+```
+symbols,sentiment,body
+"[{""symbol"":""AAPL""},{""symbol"":""FB""}]","{""basic"":""Bullish""}",$FB $FB Zuck looking for the next bear to cuckold.  Easy $180 soon.   Will destroy $AAPL in it&#39;s sleep. $FB &gt; $AAPL
+"[{""symbol"":""AAPL""},{""symbol"":""C""},{""symbol"":""ROKU""},{""symbol"":""BABA""}]",NULL,Lessons Learning From My Losing Swing-Trades: #Apple + #Citigroup $AAPL $C Also $BABA $ROKU https://talkmarkets.com/content/investing-ideas--strategies/lessons-learning-from-my-losing-swing-trades-apple--citigroup?post=215908
+"[{""symbol"":""AAPL""},{""symbol"":""SPY""}]","{""basic"":""Bearish""}",$AAPL $SPY bearish macd cross. Rsi rejection
+```
+
+
+
 ## 利用例
 ### HiveでJSONデータを処理するあれこれ(初級編)
 https://qiita.com/unksato/items/42405305c28e5a788cd7
