@@ -107,6 +107,12 @@ symbols,sentiment,body
 "[{""symbol"":""AAPL""},{""symbol"":""SPY""}]","{""basic"":""Bearish""}",$AAPL $SPY bearish macd cross. Rsi rejection
 ```
 
+```
+create table twits_message (symbols STRING, sentiment STRING, body STRING) STORED AS TEXTFILE;
+insert overwrite table twits_message select message.symbols, message.entities.sentiment, message.body from twits lateral view explode(messages) messages as message;
+select symbols, sentiment, body from twits_message;
+```
+
 
 
 ## 利用例
