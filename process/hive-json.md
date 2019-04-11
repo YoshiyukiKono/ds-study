@@ -180,6 +180,10 @@ https://qiita.com/unksato/items/42405305c28e5a788cd7
 ### HiveでJSONデータを処理するあれこれ(中級編)
 Https://qiita.com/unksato/items/604edb73eb636dc8ada7
 
+###  Hive posexplode関数を使った配列操作について (配列のインデックスを保持したまま処理を行う方法)
+http://kakts-tec.hatenablog.com/entry/2017/04/25/234644
+
+
 { "a": "abc", "b": 123, "c": { "aa": "xyz", "bb": 987 }, "d": [1,2,3], "e": [ { "aaa": "ABC", "bbb": 12345 }, { "aaa": "XYZ", "bbb": 98765 } ] }
 
 
