@@ -20,6 +20,39 @@ rides.printSchema()
 spark.stop()
 ```
 
+## Pandas
+```Python
+import pandas as pd
+pd.options.display.html.table_schema=True
+rides.limit(5).toPandas()
+```
+
+```Python
+# The `id` column represents a primary key variable.  It should be non-null and
+# unique.
+rides.select("id").show(10)
+
+# Count the number of missing (null) values:
+rides.select("id").filter(rides.id.isNull()).count()
+rides.select("id").where(rides.id.isNull()).count()
+
+# Count the number of distinct values:
+rides.select("id").distinct().count()
+
+# Count the number of non-missing and distinct values using Column functions:
+from pyspark.sql.functions import count, countDistinct
+rides.select(count("*"), count("id"), countDistinct("id")).show()
+
+rides.createOrReplaceTempView("rides_view")
+
+rides.groupby("service").count().toPandas().plot(x="service", y="count", kind="bar")
+
+
+# Default DB is available without doing nothing! How to change database?
+spark.sql("SELECT * FROM airlines").show()
+spark.sql("SELECT * FROM duocar.drivers").show()
+```
+
 ```R
 library(sparklyr)
 library(dplyr)
