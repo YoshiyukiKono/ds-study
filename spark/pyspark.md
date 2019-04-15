@@ -17,6 +17,7 @@ rides.count()
 len(rides.column)
 rides.show(5, vertical=True)
 rides.printSchema()
+spark.stop()
 ```
 
 ```R
@@ -39,4 +40,6 @@ riders <- spark_read_csv(
 riders %>% 
   distinct(first_name, last_name) %>% 
   sdf_nrows()
+
+spark_disconnect(spark)
 ```
