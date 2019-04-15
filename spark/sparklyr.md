@@ -1,14 +1,14 @@
 # Sparklyr
 
-- DataFrame : sdf_functions
+* DataFrame : sdf_functions
 
-- Feature transformers : ft_functions
- - ft_string_indexer
- - ft_one_hot_encoder
+* Feature transformers : ft_functions
+ * ft_string_indexer
+ * ft_one_hot_encoder
 
-- Machine learning algorithms : ml_functions
- - ml_pipeline
- - ml_fit
+* Machine learning algorithms : ml_functions
+ * ml_pipeline
+ * ml_fit
  
  # Misc
  D3.js - Data Driven Documents Java Script
