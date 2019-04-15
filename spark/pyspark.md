@@ -53,6 +53,20 @@ spark.sql("SELECT * FROM airlines").show()
 spark.sql("SELECT * FROM duocar.drivers").show()
 ```
 
+### approxQuantile
+```
+rides.approxQuantile("distance", \
+    probabilities=[0.0, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 1.0], \
+    relativeError=0.1)
+[304.0, 304.0, 304.0, 4323.0, 5626.0, 9157.0, 92204.0, 92204.0, 92204.0]
+rides.approxQuantile?
+Signature: rides.approxQuantile(col, probabilities, relativeError)
+Docstring:
+Calculates the approximate quantiles of numerical columns of a
+DataFrame.
+
+```
+
 ```R
 library(sparklyr)
 library(dplyr)
@@ -75,4 +89,23 @@ riders %>%
   sdf_nrows()
 
 spark_disconnect(spark)
+```
+
+### Spark function?
+- decrypt
+- sqrt
+
+### Various Syntax
+SELECT値の編集
+```
+riders.select(riders.id*2).show()
+riders.select("student").withColumn("student_bool", col("student") == 1).show()
+riders.select("student", (col("student") == 1).alias(""student_bool)).show()
+riders.withColumn("home_block", col("home_block").cast("string")).show()
+```
+NULL値の操作
+```
+riders.dropna(how="any", subset=["sex", "ethnicity"]).show()
+riders.fillna("UNKNOWN", subset=["sex", "ethnicity"]).show()
+riders.na.fill({"sex":"UNKNOWN", "ethnicity":"NA"}).show()
 ```
