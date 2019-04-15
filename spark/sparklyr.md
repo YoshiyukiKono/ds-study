@@ -3,8 +3,8 @@
 * DataFrame : sdf_functions
 
 * Feature transformers : ft_functions
- * ft_string_indexer
- * ft_one_hot_encoder
+  * ft_string_indexer
+  * ft_one_hot_encoder
 
 * Machine learning algorithms : ml_functions
  * ml_pipeline
