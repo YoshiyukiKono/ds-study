@@ -109,3 +109,14 @@ riders.dropna(how="any", subset=["sex", "ethnicity"]).show()
 riders.fillna("UNKNOWN", subset=["sex", "ethnicity"]).show()
 riders.na.fill({"sex":"UNKNOWN", "ethnicity":"NA"}).show()
 ```
+
+### SQL Method
+```
+spark.sql("SHOW DATABASES").show()
+spark.sql("USE duocar")
+spark.sql("SHOW TABLES").show()
+spark.sql("DESCRIBE riders").show()
+spark.sql("SELECT * FROM riders LIMIT 10").show()
+
+spark.sql("DROP TABLE IF EXISTS %s" % table_name)
+```
