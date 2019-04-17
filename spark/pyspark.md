@@ -120,3 +120,76 @@ spark.sql("SELECT * FROM riders LIMIT 10").show()
 
 spark.sql("DROP TABLE IF EXISTS %s" % table_name)
 ```
+
+#### Join
+
+```
+scientists.join(offices, scientists.office_id == offices.office_id, "inner").show()
+```
+
+##### Anti Join
+```
+# Use the value `left_anti` to return the rows in the left DataFrame that do
+# not match rows in the right DataFrame:
+scientists \
+  .join(offices, scientists.office_id == offices.office_id, "left_anti") \
+  .show()
+```
+
+### Left outer join
+```
+scientists \
+  .join(offices, scientists.office_id == offices.office_id, "left_outer") \
+  .show()
+```
+SparkのUNIONは、SQLのUNION ALL. SQLのUNIONにするには、distinctする必要がある
+
+# Data Preperation for Training, Validation, Test
+
+```
+# Use the `randomSplit` DataFrame method to split a DataFrame into random
+# subsets:
+riders.count()
+(train, validate, test) = riders.randomSplit(weights=[0.6, 0.2, 0.2], seed=12345)
+(train.count(), validate.count(), test.count())
+```
+
+approx_count_distinct: サンプル利用、正確ではないが、早い
+
+<data frame>.agg(count(..), ...)
+ Sparkの場合、
+<data frame>.select(count(..),..)でもよい。
+  
+- Skew
+  - Positive Skew: Mean Mode Avg
+  - Negative Skew: Mean Mode Avg
+- Kurtosis: Steep or Flat
+
+Use the `rollup` method to get subtotals
+rollup(A, B)
+B=nullでAだけでのaggregationが行われる(=subtotal)
+
+## Pivoting data
+```
+# The following use case is common:
+rides.groupBy("rider_student", "service").count().orderBy("rider_student", "service").show()
+
+# The `crosstab` method can be used to present this result in a pivot table:
+rides.crosstab("rider_student", "service").show()
+
+# We can also use the `pivot` method to produce a cross-tabulation:
+rides.groupBy("rider_student").pivot("service").count().show()
+
+# We can also perform other aggregations:
+rides.groupBy("rider_student").pivot("service").mean("distance").show()
+
+rides.groupBy("rider_student").pivot("service").agg(mean("distance")).show()
+
+# You can explicitly choose the values that are pivoted to columns:
+rides.groupBy("rider_student").pivot("service", ["Car", "Grand"]).agg(mean("distance")).show()
+
+# Additional aggregation functions produce additional columns:
+rides.groupBy("rider_student").pivot("service", ["Car"]).agg(count("distance"), mean("distance")).show()
+
+```
+kde = k.. d.. Estimate
