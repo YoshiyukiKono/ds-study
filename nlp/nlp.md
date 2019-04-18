@@ -14,7 +14,7 @@
 
 ## n-gram
 
-見出し語の切り出し方法
+見出し語の切り出し方法:シークエンスはすべてN個の単語を持つ。
 
 変換前
 "I would like to meet you tomorrow"
