@@ -1,5 +1,6 @@
 # MLlib
 
+## Regression
 VectorAssembler: Train DataとTest Dataにわける。
 ```
 lr = LinearRegression
@@ -50,3 +51,8 @@ ROC曲線(Receiver Operatorating Characteristic curve、受信者動作特性曲
 
 このようなことを考えると、良いモデルとは偽陽性率が低い時点で既に真陽性率が高い数値がでることという考えが直観的に理解できるのではと思います。
 
+## Classification
+
+GaussianMixture
+
+Classificationは、predictionではなく、assignmentだが、Sparkのメソッドはpredictions
