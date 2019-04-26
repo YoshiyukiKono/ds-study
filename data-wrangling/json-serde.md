@@ -221,6 +221,10 @@ https://stackoverflow.com/questions/26644351/cannot-validate-serde-org-openx-dat
 ファイルが置いていない時（も）このエラー
 Cannot validate serde : org.openx.data.jsonserde.jsonserde
 
+## Lateral View + explode
+
+JSON処理した後に、配列（TICKER）を展開する。
+https://qiita.com/daifuku_mochi2/items/35581b05c16bc3825f7e
 
 ## 組み込みUDF（未確認）
 
