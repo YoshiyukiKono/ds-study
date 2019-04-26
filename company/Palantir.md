@@ -1,5 +1,8 @@
 # Palantir
 
+* ビッグデータ分野の不正検知
+http://www.nicmr.com/nicmr/report/repo/2017/2017spr07.pdf
+
 * 米国・パランティア社（Palantir Technologies Inc.）との業務提携契約を締結
   * パランティア社の不正取引検知製品をアジア地域の仮想通貨取引所等へ共同展開
 https://www.okwave.co.jp/press/20181114-2/
