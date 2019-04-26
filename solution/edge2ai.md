@@ -1,4 +1,4 @@
-# Solution Reference
+# Edge to AI
 
 
 Edge to ai analytics from edge to cloud with efficient movement of machine data
