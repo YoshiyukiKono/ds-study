@@ -222,3 +222,9 @@ https://stackoverflow.com/questions/26644351/cannot-validate-serde-org-openx-dat
 Cannot validate serde : org.openx.data.jsonserde.jsonserde
 
 
+## 組み込みUDF（未確認）
+
+https://docs.microsoft.com/ja-jp/azure/hdinsight/hadoop/using-json-in-hive
+
+## 正規表現
+https://support.treasuredata.com/hc/ja/articles/215030588-Hive-%E6%96%87%E5%AD%97%E5%88%97%E9%96%A2%E6%95%B0
