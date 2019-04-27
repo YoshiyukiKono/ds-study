@@ -19,9 +19,6 @@
 #### Deep Q-network
 DeepMindによる寄与（David Silver "Deep Reinforcement Learning" http://www0.ucl.ac.uk/.../deep_rl.pdf ）
 
-Deep Learning with Kearas by Antonio Gulli（日本版タイトル「直感Deep Learning」）より
-https://github.com/oreilly-japan/deep-learning-with-keras-ja
-https://github.com/PacktPublishing/Deep-Learning-with-Keras
 * Experience Reply: 行動結果を蓄積するreplay memoryを用いる。連続するフレームは似ているため、学習結果(s, a, r, s')を一定サイズのメモリに格納
 * Q-networkの固定(fixed target Q-network): ある段階で、Learning結果を固定する。
 * 報酬のクリッピング: スコアを成功1、失敗-1に固定。
@@ -37,7 +34,7 @@ AlphaGoの特徴
 
 ポーカー（非完全情報ゲーム）をプレイするAI
 * Librtatus
-  * リスクと報酬をバランスさせる（ナッシュ近郊）
+  * リスクと報酬をバランスさせる（ナッシュ均衡）
 * DeepStack
   * ランダムに生成された局面を使用して強化学習（強化学習は使用していない、ともあるが）
 
@@ -47,3 +44,8 @@ AlphaGoの特徴
 
 ## Multi-Agent Reinforcement Learning
 ### Markov Game Theory
+
+## Reference
+* Deep Learning with Kearas by Antonio Gulli（日本版タイトル「直感Deep Learning」）より
+ * https://github.com/oreilly-japan/deep-learning-with-keras-ja
+ * https://github.com/PacktPublishing/Deep-Learning-with-Keras
