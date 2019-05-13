@@ -114,11 +114,61 @@ insert overwrite table twits_message select message.symbols, message.entities.se
 select symbols, sentiment, body from twits_message;
 ```
 
+## 詳細化
+sentimentの値を取り出せるよう構造体として定義
+```
+DROP TABLE IF EXISTS twits;
+CREATE EXTERNAL TABLE twits (
+	messages 
+	ARRAY<
+	    STRUCT<body: STRING,
+	        symbols:ARRAY<STRUCT<symbol:STRING>>,
+	        entities:STRUCT<sentiment:STRUCT<basic:STRING>>
+	    >
+	>
+)
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' 
+STORED AS TEXTFILE
+LOCATION '/tmp/twits';
+```
+
+sentimentがないメッセージを除いて、select (selectではうまくいくが、insert ... selectでは、なぜか上手くいかない)
+```
+select message.symbols, message.entities.sentiment.basic, message.body from twits lateral view explode(messages) messages as message where message.entities.sentiment is not null;
+```
+
+symbolを配列として受け取れるよう定義(JSON文字列はStructとして認識される。)
+```
+create table twits_message (symbols array<struct<symbol:string>>, sentiment STRING, body STRING) STORED AS TEXTFILE;
+create table messages (symbols array<struct<symbol:string>>, sentiment STRING, body STRING) STORED AS TEXTFILE;
+```
+
+insertの時につけたnot null条件は上手く働かないので、２段階で、テーブルに格納
+```
+create table twits_message (symbols array<struct<symbol:string>>, sentiment STRING, body STRING) STORED AS TEXTFILE;
+create table messages (symbols array<struct<symbol:string>>, sentiment STRING, body STRING) STORED AS TEXTFILE;
+
+insert overwrite table twits_message select message.symbols, message.entities.sentiment, message.body from twits lateral view explode(messages) messages as message where message.entities.sentiment is not null;
+insert overwrite table messages select symbols, sentiment, body from twits_message where sentiment is not null;
+```
+
+latelal view を使い、1行＝１シンボルに変換。全てのカラムは純粋に文字列のみになる。
+```
+select symbol.symbol, sentiment, body from messages lateral view explode(symbols) symbols as symbol;
+```
+
 ## TODO
 
-- 現在のクエリを基本に扱いやすいデータに切り詰める:sentiment.basic
-- SympolでのGroupや、SentimentでのGroup
-- ML利用データへ変換：Bulish -> 2, Bealish -> -2, NULLデータ除去など。DATAタグの付与（テキスト結合でよしとする？）
+- DONE 現在のクエリを基本に扱いやすいデータに切り詰める:sentiment.basic
+- DONE SympolでのGroupや、SentimentでのGroup
+
+- ML利用データへ変換：Bulish -> 2, Bealish -> -2, 
+
+- DONE NULLデータ除去など。
+
+- DATAタグの付与（テキスト結合でよしとする？）
+
+
 - Hive検索結果をテキストに吐き出す（どうやる？　質問１）
 - Sparkで加工？　やりたくない？
 
