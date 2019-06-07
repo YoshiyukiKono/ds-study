@@ -24,9 +24,11 @@ TP（True Positive）とTN（True Negative）を足して、全部の合計で�
 
 実際に陽性であるサンプルのうち、陽性であると判定されたサンプルの割合
 
-### Specificity
+### Specificity 特異度
 
 TN/(TN+FP)
+真陰性率（True Negative Rate）＝TN／（FP+TN）
+実際に陰性であるサンプルのうち、陰性であると判定されたサンプルの割合。
 
 ## F1-Score / F-measure (F値)
 
