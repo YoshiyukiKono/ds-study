@@ -19,12 +19,19 @@ TN/(TN+FP)
 
 ## F1-Score / F-measure (F値)
 
+F値は、２集団の母平均の比較（TODO）
+
 ## Confusion Matrix
+
 
 ||Positive|Negative|
 |--|--|--|
+|実際のクラス|||
 |Positive|TP|FN|
 |Negative|FP|TN|
+
+* スパムメールの判定では、False Negativeが低いことが目指される（非スパムをスパムと判定することは問題だが、スパムをスパムと判定できなくても影響は低い）
+* 医療における判定では、False Negativeが低いことが目指される（実在している症状を見逃すことは問題だが、実際には存在しない症状をPositiveと判定しても影響は低い）
 
 ## 多クラス分類の平均の取り方
 ### Micro-average マイクロ平均
