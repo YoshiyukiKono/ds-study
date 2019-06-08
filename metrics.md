@@ -67,6 +67,11 @@ F値は、適合率を再現率が同じように高い分類器を高く評価�
 
 ## 分類モデル比較
 ### ROC curve
+
+Receiver Operating Characteristic: 受信者動作特性曲線
+
+偽陽性率に対する、真陽性率をプロットしたもの
+
 ### AUC (Area Under the Curve) Score
 
 ## Log-Loss
