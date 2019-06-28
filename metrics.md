@@ -148,4 +148,26 @@ Log Lossは実際のラベルからどのくらい違っていたのかを考慮
 
 一言でいうと、クロスエントロピー。0~1の予測値を入力してモデルの性能を測る指標を出力する。
 
+## How to assess the performance of the model
+https://towardsdatascience.com/the-complete-guide-to-classification-in-python-b0e34c92e455
+
+With classification, it is sometimes irrelevant to use accuracy to assess the performance of a model.
+
+Consider analyzing a highly imbalanced data set. For example, you are trying to determine if a transaction is fraudulent or not, but only 0.5% of your data set contains a fraudulent transaction. Then, you could predict that none of the transactions will be fraudulent, and have a 99.5% accuracy score! Of course, this is a very naive approach that does not help detect fraudulent transactions.
+
+So what do we use?
+
+Usually, we use sensitivity and specificity.
+
+Sensitivity is the true positive rate: the proportions of actual positives correctly identified.
+
+Specificity is the true negative rate: the proportion of actual negatives correctly identified.
+
+Let’s give some context to better understand. Using the fraud detection problem, the sensitivity is the proportion of fraudulent transactions identified as fraudulent. The specificity is the proportion of non-fraudulent transactions identified as non-fraudulent.
+
+Therefore, in an ideal situation, we want both a high sensitivity and specificity, although that might change depending on the context. For example, a bank might want to prioritize a higher sensitivity over specificity to make sure it identifies fraudulent transactions.
+
+The ROC curve (receiver operating characteristic) is good to display the two types of error metrics described above. The overall performance of a classifier is given by the area under the ROC curve (AUC). Ideally, it should hug the upper left corner of the graph, and have an area close to 1.
+
+
 
