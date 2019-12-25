@@ -34,4 +34,6 @@ https://gihyo.jp/dev/serial/01/make-findspot/0006
  
 ## Reference
 
+[BERT・XLNet・ALBERT・T5・ERINEの論文の解説と簡易ハンズオンを行うセミナー](https://ml-for-experts.connpass.com/event/159426/)
+
 [BERT・XLNetに学ぶ、言語処理における事前学習（電子書籍 120P)](https://note.com/lib_arts/n/n810568c557fd)
