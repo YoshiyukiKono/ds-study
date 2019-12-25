@@ -31,3 +31,7 @@ https://gihyo.jp/dev/serial/01/make-findspot/0006
 
 ## Spark
  * CountVectorizer
+ 
+## Reference
+
+[BERT・XLNetに学ぶ、言語処理における事前学習（電子書籍 120P)](https://note.com/lib_arts/n/n810568c557fd)
