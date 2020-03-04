@@ -22,3 +22,31 @@ $ pip-licenses --from=classifier --with-system | grep entrypoints
 ```
 pip-licenses --from=mixed --with-system --with-description --order=license --format=csv > license_<project>.csv
 ```
+
+### Dependency (Required-by)
+```
+cdsw@9qd8w0glnboeencs:~$ pip3 show sasl
+Name: sasl
+Version: 0.2.1
+Summary: Cyrus-SASL bindings for Python
+Home-page: http://github.com/toddlipcon/python-sasl
+Author: None
+Author-email: None
+License: UNKNOWN
+Location: /home/cdsw/.local/lib/python3.6/site-packages
+Requires: six
+Required-by: thrift-sasl
+cdsw@9qd8w0glnboeencs:~$ pip3 show thrift-sasl
+Name: thrift-sasl
+Version: 0.3.0
+Summary: Thrift SASL Python module that implements SASL transports for Thrift (`TSa
+slClientTransport`).
+Home-page: https://github.com/cloudera/thrift_sasl
+Author: Uri Laserson
+Author-email: laserson@cloudera.com
+License: Apache License, Version 2.0
+Location: /home/cdsw/.local/lib/python3.6/site-packages
+Requires: thrift, sasl
+Required-by: 
+cdsw@9qd8w0glnboeencs:~$ 
+```
