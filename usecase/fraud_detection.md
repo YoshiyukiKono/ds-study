@@ -2,17 +2,56 @@
 
 ## References
 
-- Credit Card Fraud Detection using Autoencoders in Keras — TensorFlow for Hackers (Part VII)
-   - https://medium.com/@curiousily/credit-card-fraud-detection-using-autoencoders-in-keras-tensorflow-for-hackers-part-vii-20e0c85301bd?source=search_post---------0
-- Fraud Detection Under Extreme Class Imbalance
-   - https://towardsdatascience.com/fraud-detection-under-extreme-class-imbalance-c241854e60c?source=search_post---------1
+### Cloudera
+
+#### Deep Learning for Anomaly Detection
+
+https://ff12.fastforwardlabs.com/
+
+- 解釈可能性
+   - LIME
+   - Deep SHAP https://arxiv.org/abs/1705.07874
+   - Interpretability https://clients.fastforwardlabs.com/ff06/report
+ 
+ !(https://ff12.fastforwardlabs.com/figures/ill-12.png)
+ 
+ 
+##### Sherlock: Anomaly Detector
+ https://github.com/yahoo/sherlock
+ 
+##### EGADS (Extensible Generic Anomaly Detection System) 
+https://github.com/yahoo/egads
+
+### Medium
+
+#### Credit Card Fraud Detection using Autoencoders in Keras — TensorFlow for Hackers (Part VII)
+https://medium.com/@curiousily/credit-card-fraud-detection-using-autoencoders-in-keras-tensorflow-for-hackers-part-vii-20e0c85301bd
+
+
+https://github.com/curiousily/Credit-Card-Fraud-Detection-using-Autoencoders-in-Keras
+
    
-- How to Perform Fraud Detection with Personalized Page Rank
-   - https://medium.com/sicara/fraud-detection-personalized-page-rank-networkx-15bd52ba2bf6
-- Fraud Detection Systems — A Second look
-   - https://medium.com/@deepeshn1988/fraud-detection-systems-a-second-look-a8f705624783
+#### Fraud Detection Under Extreme Class Imbalance
+https://towardsdatascience.com/fraud-detection-under-extreme-class-imbalance-c241854e60c?source=search_post---------1
+
+- 時系列データの場合、データポイントの標準偏差を調べて外れ値を探すことができる。
+   - 時系列の特定の外れ値は、明確なパターンを示す場合があり、フーリエ変換または隠れマルコフモデルを使用して検出できる
+
+- 罰則付きモデル
+   - 罰則は、少数派にもっと注意を払うようにモデルにバイアスをかけることができる。 
+   - penalized-SVMやpenalized-LDA
    
-### ATM Fraud Detection with Kafka & KSQL ~ Stream Processing using Apache Kafka, KSQL & ElasticSearch 
+- オーバーサンプリング
+   - SMOTE, ADASYN
+- アンダーサンプリング
+   - クラスタリング手法（K-Meansなど）に基づく重心の生成
+
+### How to Perform Fraud Detection with Personalized Page Rank
+https://www.sicara.ai/blog/2019-01-09-fraud-detection-personalized-page-rank
+
+https://medium.com/sicara/fraud-detection-personalized-page-rank-networkx-15bd52ba2bf6
+   
+### ATM Fraud Detection with Kafka & KSQL ~ Stream Processing using Apache Kafka, KSQL & ElasticSearch (Fraud Detection Systems — A Second look)
 
 https://medium.com/@deepeshn1988/fraud-detection-systems-a-second-look-a8f705624783
 
@@ -71,6 +110,13 @@ https://medium.com/gobeyond-ai/how-to-choose-fraud-detection-software-features-c
 - ソリューションは、チャネル全体の不正を識別して防止し、数百から数千の属性（ユーザーアクティビティ、デバイスデータ、または地理位置情報など）を使用
 - 一般およびドメイン固有のブラックリストを選別してすべてのトランザクションをスコアリングできる必要がある。
 
-### Reducing false positives in credit card fraud detection
+#### Reducing false positives in credit card fraud detection
 https://www.sciencedaily.com/releases/2018/09/180920131513.htm
+
+
+#### Deep Feature Synthesis
+https://docs.featuretools.com/en/stable/automated_feature_engineering/afe.html
+
+#### Fraud detection in retail with graph analysis
+https://medium.com/@YvesMulkers/fraud-detection-in-retail-with-graph-analysis-686b6c32a2b8
 
